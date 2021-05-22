@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block titulo %}  Contatos | {% endblock %}
+{%block content%}
+
+  <h1 class="mt-5">Minha agenda</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Telefone</th>
+        <th>Categoria</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for contact_field in contact_key %}
+        {% if contact_field.show %}
+          <tr>
+            <td>{{ contact_field.id }}</td>
+            <td>
+              <a href="{% url 'contact_detail' contact_field.id %}">{{ contact_field.name }}</a>
+            </td>
+            <td>{{ contact_field.surname }}</td>
+            <td>{{ contact_field.telephone }}</td>
+            <td>{{ contact_field.category }}</td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+      {% for page_in in contact_key.paginator.page_range %}
+        {% if contact_key.number == page_in %}
+          <li class="page-item active">
+            <a class="page-link" href="?page={{ page_in }}&terms={{ request.GET.terms }}">{{ page_in }}</a>
+          </li>
+        {% else %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_in }}&terms={{ request.GET.terms }}">{{ page_in }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
+
+{%endblock%}

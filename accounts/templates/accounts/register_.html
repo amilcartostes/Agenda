@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block titulo %} Cadastro | {% endblock %}
+{% block content %}
+<h1 class="mt-3 mb-3">Cadastro de Usuários!</h1>
+
+{% if not user.is_authenticated %}
+  <form method="POST" action="{% url 'register' %}">
+    {% csrf_token %}
+    <div class="form-group">
+      <label>* Nome</label>
+      <input type="text" name="name" value="{{ request.POST.name }}" class="form-control" placeholder="Entre o Nome">
+      <small id="nameHelp" class="form-text text-muted">Campo Obrigatório - Entre com o seu nome.</small>
+    </div>
+    <div class="form-group">
+      <label>* Sobrenome</label>
+      <input type="text" name="surname" value="{{ request.POST.surname }}" class="form-control" placeholder="Entre o Sobrenome">
+      <small id="surnameHelp" class="form-text text-muted">Campo Obrigatório - Entre com o seu sobrenome.</small>
+    </div>
+    <div class="form-group">
+      <label>* E-mail</label>
+      <input type="email" name="email" value="{{ request.POST.email }}" class="form-control" placeholder="Entre o e-mail">
+      <small id="emailHelp" class="form-text text-muted">Campo Obrigatório - Entre com o e-mail válido.</small>
+    </div>
+    <div class="form-group">
+      <label>* Nome do Usuário</label>
+      <input type="text" name="username" value="{{ request.POST.username }}" class="form-control" placeholder="Entre o Usuário">
+      <small id="userHelp" class="form-text text-muted">Campo Obrigatório - Entre com um nome para o usuário.</small>
+    </div>
+    <div class="form-group">
+      <label for="InputPassword_1">* Digite uma Senha</label>
+      <input type="password" name="password_1" class="form-control" id="InputPassword_1" placeholder="Senha">
+    </div>
+    <div class="form-group">
+      <label for="InputPassword_2">* Confirme a Senha</label>
+      <input type="password" name="password_2" class="form-control" id="InputPassword_2" placeholder="Confirme a Senha">
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+  </form>
+{% else %}
+<p>
+  {{user}}, você já está logado,
+  <a href="{% url 'dashboard' %}">clique aqui</a> para ir para Área do Usuário.
+</p>
+{% endif %}
+
+{% endblock %}

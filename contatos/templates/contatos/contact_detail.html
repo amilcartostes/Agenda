@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block titulo %}  Contato: {{ contact_key.name }} | {% endblock %}
+{%block content%}
+  <h1 class="mt-5">{{ contact_key.name }}  {{ contact_key.surname }}</h1>
+  {% if contact_key.image %}
+    <p>
+      <img src="{{ contact_key.image.url }}" style="max-width: 250px; height: auto;">
+    </p>
+  {% endif %}
+  <dl>
+    <dt>ID</dt>
+    <dd>{{ contact_key.id }}</dd>
+
+    <dt>Telefone</dt>
+    <dd>{{ contact_key.telephone }}</dd>
+
+    <dt>E-mail</dt>
+    <dd>{{ contact_key.email }}</dd>
+
+    <dt>Data criação</dt>
+    <dd>{{ contact_key.creation_date }}</dd>
+
+    <dt>Categoria</dt>
+    <dd>{{ contact_key.category }}</dd>
+
+    <dt>Descrição</dt>
+    <dd>{{ contact_key.description }}</dd>
+  </dl>
+{%endblock%}
