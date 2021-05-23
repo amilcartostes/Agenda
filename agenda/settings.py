@@ -25,7 +25,6 @@ SECRET_KEY = 'django-insecure-0^zmbonzt&g@+5=rsr#37eg@d=p$ypja^axde9_k*s)s$s&@9u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# HOSTS ALLOWED
 ALLOWED_HOSTS = ['lotuskombucha.com.br', 'www.lotuskombucha.com.br', '192.168.0.74', 'dbserver']
 
 SECURE_SSL_REDIRECT = True
