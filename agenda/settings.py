@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-0^zmbonzt&g@+5=rsr#37eg@d=p$ypja^axde9_k*s)s$s&@9u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # HOSTS NAMES ALLOWED
 ALLOWED_HOSTS = ['lotuskombucha.com.br', 'www.lotuskombucha.com.br', '192.168.0.74', 'dbserver']
@@ -76,26 +76,24 @@ WSGI_APPLICATION = 'agenda.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-#DATABASES = {
+# DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
-#}
+# }
 
-# Configuração para o MySql
+# MySql Configuration
 DATABASES = {
-	'default': {
-	'ENGINE': 'django.db.backends.mysql',
-	'USER': 'usragendadb',
-	'PASSWORD': '8450C@mpeao',
-	'HOST': '127.0.0.1',
-	'PORT': '3306',
-	'NAME': 'agendadb',
-	    }
-	}
-
-
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': 'usragendadb',
+        'PASSWORD': '8450C@mpeao',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'NAME': 'agendadb',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -153,7 +151,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MESSAGE_TAGS = {
     constants.ERROR: 'alert-danger',
     constants.WARNING: 'alert-warning',
-    constants.SUCCESS:  'alert-success',
+    constants.SUCCESS: 'alert-success',
     constants.INFO: 'alert-info',
     constants.DEBUG: 'alert-info',
 }
+
+# IF EXIST INCLUDE LOCAL DEVELOPER DATA BASE
+#
+try:
+    from .local_settings import *
+except ImportError as error:
+    pass
