@@ -9,7 +9,7 @@ Projeto Agenda - Python + Django
 ### Lista de Tarefas:
 
 * [X] Aprender sobre GitHub.   
-* [ ] Criar um Clone do Projeto Agenda em Windows.  
+* [X] Criar um Clone do Projeto Agenda em Windows.  
 * [ ] Ver Read The Docs   
 * [ ] Realizar Testes
 
