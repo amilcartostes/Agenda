@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Agenda
+
+accounts/__pycache__/
+agenda/__pycache__/
+contatos/__pycache__/
