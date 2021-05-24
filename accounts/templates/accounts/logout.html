@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
-
+{% block titulo %} Logout | {% endblock %}
 {% block content %}
-Logout
+<h1 class="mt-3 mb-3">Logout do Usuário!</h1>
+<h3>{{user}}</h3>
+<p>
+  <a href="{% url 'off' %}">Clique aqui</a> para confirmar a sua saida.
+</p>
 {% endblock %}

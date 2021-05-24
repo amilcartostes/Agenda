@@ -38,8 +38,13 @@
   </form>
 {% else %}
 <p>
-  {{user}}, você já está logado,
-  <a href="{% url 'dashboard' %}">clique aqui</a> para ir para Área do Usuário.
+  <h3>{{user}}</h3>
+  <h5>Você já está cadastrado</h5>
+<p>
+  <a href="{% url 'index' %}">Clique aqui</a> para ir para Ágenda.
+</p>
+<p>
+  <a href="{% url 'dashboard' %}">Clique aqui</a> para ir para Área do Usuário.
 </p>
 {% endif %}
 

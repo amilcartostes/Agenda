@@ -3,7 +3,7 @@ from django.contrib import messages, auth
 from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from . models import FormContact
+from .models import FormContact
 
 
 def login(request):
@@ -24,10 +24,16 @@ def login(request):
         # Logs in the authenticated user
         auth.login(request, user)
         messages.success(request, f'Login de {user} realizado com sucesso!')
-        return redirect('dashboard')
+        return redirect('index')
 
 
 def logout(request):
+    # auth.logout(request)
+    # return redirect('logout')
+    return render(request, 'accounts/logout.html')
+
+
+def off(request):
     auth.logout(request)
     return redirect('login')
 
@@ -120,5 +126,3 @@ def dashboard(request):
                               f'realizado com sucesso!')
     form_return.save()
     return redirect('dashboard')
-
-

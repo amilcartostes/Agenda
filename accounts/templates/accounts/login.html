@@ -8,7 +8,6 @@
 {% if not user.is_authenticated %}
   <form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
-
     <div class="form-group">
       <label>* Nome do Usuário</label>
       <input type="text" name="username" value="{{ request.POST.username }}" class="form-control" placeholder="Entre o Usuário">
@@ -22,8 +21,11 @@
   </form>
 {% else %}
 <p>
-  Você já está logado como {{user}},
-  <a href="{% url 'logout' %}">clique aqui</a> para sair.
+  <h3>{{user}}</h3>
+<h5>Você já está logado!</h5>
+<p><a href="{% url 'logout' %}">Clique aqui</a> para fazer Logout.</p>
+<p><a href="{% url 'index' %}">Clique aqui</a> para ir para Agenda.</p>
+<p><a href="{% url 'dashboard' %}">Clique aqui</a> para ir para Área do Usuário.</p>
 </p>
 {% endif %}
 
